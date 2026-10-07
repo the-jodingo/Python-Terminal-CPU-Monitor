@@ -1,14 +1,42 @@
-# Python-Terminal-CPU-Monitor
+# Python Terminal CPU Monitor
 
-# This version uses psutil for precise, cross-core monitoring and adds colors + history graphs in the terminal.
-First, install the dependency:
+A live terminal dashboard for CPU usage: overall load, per-core breakdown, load
+average, and the top CPU-consuming processes — refreshed in place.
 
-sudo apt update && sudo apt install python3-pip -y
+## Requirements
 
-pip3 install psutil rich
+- Python 3.8+
+- `psutil` and `rich`
 
-After depencies you will run this code :
+```bash
+pip install psutil rich
+```
 
+## Usage
+
+```bash
 python3 cpu_monitor.py
+```
 
-Want email alerts on high CPU? Extend the Python script with smtplib or use monit / Prometheus + Grafana for advanced setups.
+Press `Ctrl+C` to exit. The dashboard refreshes twice per second and keeps a
+rolling history bar of the last 20 samples.
+
+## What it shows
+
+| Metric | Source |
+|---|---|
+| Overall CPU usage | `psutil.cpu_percent()` |
+| Per-core usage | `psutil.cpu_percent(percpu=True)` (first 8 cores) |
+| Load average (1/5/15 min) | `os.getloadavg()` |
+| Top processes by CPU | `psutil.process_iter()` sorted by `cpu_percent` |
+
+## Notes
+
+- On macOS, `os.getloadavg()` reports the load average but it is not directly
+  comparable to Linux (macOS counts differently). The script is written for Linux.
+- Want email alerts on sustained high CPU? Extend it with `smtplib`, or use
+  Prometheus + Grafana for anything production-facing.
+
+## License
+
+MIT
