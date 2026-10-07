@@ -1,3 +1,9 @@
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![psutil](https://img.shields.io/badge/psutil-required-4B8BBE)](https://github.com/giampaolo/psutil)
+[![rich](https://img.shields.io/badge/rich-required-8A2BE2)](https://github.com/Textualize/rich)
+[![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)](https://www.kernel.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 # Python Terminal CPU Monitor
 
 A live terminal dashboard for CPU usage: overall load, per-core breakdown, load
